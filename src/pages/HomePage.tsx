@@ -30,9 +30,10 @@ import {
 import { useLocalStorage } from '@/hooks/use-local-storage';
 import type { Calculation } from '@shared/types';
 import { useTheme } from '@/hooks/use-theme';
+import { TimePicker } from '@/components/ui/time-picker';
 // --- UTILITY FUNCTIONS ---
 const parseTime = (timeStr: string): [number, number] | null => {
-  const parts = timeStr.match(/^(\d{1,2})[.:]?(\d{2})$/);
+  const parts = timeStr.match(/^(\d{1,2})[:.]?(\d{2})$/);
   if (!parts) return null;
   const hours = parseInt(parts[1], 10);
   const minutes = parseInt(parts[2], 10);
@@ -72,8 +73,8 @@ interface AppActions {
 }
 const useStore = create<AppState & AppActions>()(
   immer((set, get) => ({
-    startTime: '',
-    endTime: '',
+    startTime: '20:30',
+    endTime: '23:45',
     hourlyRate: '5000',
     result: null,
     history: [],
@@ -94,11 +95,11 @@ const useStore = create<AppState & AppActions>()(
       const end = parseTime(endTime);
       const rate = parseFloat(hourlyRate);
       if (!start) {
-        toast.error('Format Waktu Mulai salah. Gunakan HH.MM atau HHMM.');
+        toast.error('Format Waktu Mulai salah. Gunakan HH:MM.');
         return;
       }
       if (!end) {
-        toast.error('Format Waktu Selesai salah. Gunakan HH.MM atau HHMM.');
+        toast.error('Format Waktu Selesai salah. Gunakan HH:MM.');
         return;
       }
       if (isNaN(rate) || rate <= 0) {
@@ -152,11 +153,11 @@ function CalculatorForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="start-time">Waktu Mulai</Label>
-          <Input id="start-time" placeholder="cth: 20.30" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
+          <TimePicker value={startTime} onChange={setStartTime} />
         </div>
         <div className="space-y-2">
           <Label htmlFor="end-time">Waktu Selesai</Label>
-          <Input id="end-time" placeholder="cth: 23.45" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
+          <TimePicker value={endTime} onChange={setEndTime} />
         </div>
       </div>
       <div className="space-y-2">
