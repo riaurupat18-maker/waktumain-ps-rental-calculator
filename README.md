@@ -1,6 +1,6 @@
 # WaktuMain: PS Rental Calculator
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/riaurupat18-maker/waktumain-ps-rental-calculator)
 
 A sleek and modern calculator for PlayStation rental businesses to compute charges and track rental history effortlessly.
 
@@ -85,7 +85,7 @@ This project is configured for easy deployment to Cloudflare Workers.
 
 Alternatively, you can deploy your own version of this project with a single click.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/riaurupat18-maker/waktumain-ps-rental-calculator)
 
 ## License
 
